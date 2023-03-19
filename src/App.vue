@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<div>
+		<Header />
+		<Content :data="data_1" @changeData="handleChangeData"/>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import "./index.css"
+import Header from "./components/headComp.vue"
+import Content from "./components/content.vue"
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	components: {
+		Header,
+		Content
+	},
+    data() {
+        return {
+
+        }
+    },
+    mounted() {
+
+    },
+    methods: {
+        handleChangeData(name, data) {
+            this[name] = data
+        }
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+	margin: 0;
+	padding: 0;
 }
 </style>
