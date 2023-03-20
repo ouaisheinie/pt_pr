@@ -11,7 +11,7 @@
                     だるくなったり痛くなりますか？
                 </div>
             </div>
-            <AnserRadio :data="data_1" :radioValue="radio1_value" :imgsrc="radio1_img" @changefunc="handleChangeVal" attr_name1="radio1_value" attr_name2="radio1_img" padding_left="42px" />
+            <AnserRadio :data="data_1" :radioValue="radio1_value" :imgsrc="radio1_img" @changefunc="handleChangeVal" attr_name1="radio1_value" attr_name2="radio1_img" attr_name3="radio1_text" padding_left="42px" />
         </div>
         <img class="radio_img" v-show="radio1_img" :src="radio1_img" alt="VIVAIA">
 
@@ -26,7 +26,7 @@
                     最も悩む足のトラブルはどれですか？
                 </div>
             </div>
-            <AnserRadio :data="data_2" :radioValue="radio2_value" :imgsrc="radio2_img" @changefunc="handleChangeVal" attr_name1="radio2_value" attr_name2="radio2_img" padding_left="30px"/>
+            <AnserRadio :data="data_2" :radioValue="radio2_value" :imgsrc="radio2_img" @changefunc="handleChangeVal" attr_name1="radio2_value" attr_name2="radio2_img" attr_name3="radio2_text" padding_left="30px"/>
         </div>
         <img class="radio_img" v-if="radio2_img" :src="radio2_img" alt="VIVAIA">
 
@@ -41,7 +41,7 @@
                     解決していますか？
                 </div>
             </div>
-            <AnserRadio :data="data_3" :radioValue="radio3_value" :imgsrc="radio3_img" @changefunc="handleChangeVal" attr_name1="radio3_value" attr_name2="radio3_img" padding_left="30px"/>
+            <AnserRadio :data="data_3" :radioValue="radio3_value" :imgsrc="radio3_img" @changefunc="handleChangeVal" attr_name1="radio3_value" attr_name2="radio3_img" attr_name3="radio3_text" padding_left="30px"/>
         </div>
         <img class="radio_img" v-if="radio3_img" :src="radio3_img" alt="VIVAIA">
 
@@ -56,18 +56,19 @@
                     どこに惹かれましたか？
                 </div>
             </div>
-            <AnserCheckbox :data="data_4" :checkboxValue="radio4_value" :imgsrc="radio4_img" @changefunc="handleChangeVal" attr_name1="radio4_value" attr_name2="radio4_img" padding_left="20px"/>
+            <AnserCheckbox :data="data_4" :checkboxValue="radio4_value" :imgsrc="radio4_img" @changefunc="handleChangeVal" attr_name1="radio4_value" attr_name2="radio4_text_arr" padding_left="20px" :checkboxText="radio4_text_arr" />
         </div>
         <div class="submit" v-if="radio4_value.length">
             <button class="submit-btn" @click="handleViewData">回答完了</button>
         </div>
-        <img class="radio_img" v-if="radio4_value.length" :src="radio4_img" alt="VIVAIA">
+        <img class="radio_img" v-if="finished" :src="radio4_img" alt="VIVAIA">
     </div>
 </template>
 
 <script>
 import AnserRadio from "./comp/radio"
 import AnserCheckbox from "./comp/checkbox.vue"
+import { nanoid } from 'nanoid'
 
 export default {
     components: {
@@ -79,27 +80,61 @@ export default {
     },
     data() {
         return {
+            formId: pt_hello_data.formId,
+            uid: "",
             data_1: pt_hello_data.data_1,
             radio1_value: pt_hello_data.radio1_value,
+            radio1_text: pt_hello_data.radio1_text,
             radio1_img: pt_hello_data.radio1_img,
             data_2: pt_hello_data.data_2,
             radio2_value: pt_hello_data.radio2_value,
+            radio2_text: pt_hello_data.radio2_text,
             radio2_img: pt_hello_data.radio2_img,
             data_3: pt_hello_data.data_3,
             radio3_value: pt_hello_data.radio3_value,
+            radio3_text: pt_hello_data.radio3_text,
             radio3_img: pt_hello_data.radio3_img,
             data_4: pt_hello_data.data_4,
             radio4_value: pt_hello_data.radio4_value,
+            radio4_text_arr: [],
             radio4_img: pt_hello_data.radio4_img,
+            finished: false,
         }
+    },
+    mounted() {
+        this.uid = nanoid(24)
     },
     methods: {
         handleChangeVal(name, val) {
             this[name] = val
-
         },
-        handleViewData() {
-            console.log(this.radio4_value)
+        async handleViewData() {
+            const params = {
+                formId: this.formId,
+                uid: this.uid,
+                timestamp: Date.now(),
+                data: {
+                    feetpain_yes_no: this.radio1_text,
+                    feetpain_detail: this.radio2_text,
+                    feetpain_solution: this.radio3_text,
+                    selling_point: JSON.parse(JSON.stringify(this.radio4_text_arr)).join(",")
+                }
+            }
+            try {
+                const res = await fetch("https://ecagent.ptengine.com/api/form", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(params)
+                })
+                console.log(res)
+                if (res.ok === true) {
+                    this.finished = true
+                }
+            } catch (error) {
+                throw new Error(error)
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
     <div class="answer-container">
         <div class="answer-radio">
             <img class="prod-img" v-if="data.img" :src="data.img" alt="VIVAIA" />
-            <div class="radio-style radio-not-finally" :style="{ paddingLeft: padding_left}" v-for="(item, index) in data.radio_list" :key="index" @click="handleSelect" :data-val="item.value" :data-imgsrc="item.radio_img">
+            <div class="radio-style radio-not-finally" :style="{ paddingLeft: padding_left}" v-for="(item, index) in data.radio_list" :key="index" @click="handleSelect" :data-val="item.value" :data-imgsrc="item.radio_img" :data-text="item.text">
                 <input class="radio" type="radio" :name="item.radio_name" :value="item.value">
                 <div class="radio-virtual">
                     <img v-if="Number(radioValue) === index + 1" src="../../assets/radio_icon1.png" alt="VIVAIA">
@@ -30,6 +30,9 @@ export default {
         attr_name2: {
             type: String
         },
+        attr_name3: {
+            type: String
+        },
         padding_left: {
             type: String
         }
@@ -38,6 +41,7 @@ export default {
         handleSelect(e) {
             this.$emit('changefunc', this.attr_name1, Number(e.target.dataset.val))
             this.$emit("changefunc", this.attr_name2, e.target.dataset.imgsrc)
+            this.$emit("changefunc", this.attr_name3, e.target.dataset.text)
         }
     }
 }
