@@ -3,9 +3,9 @@
         <div class="answer-radio">
             <img class="prod-img" v-if="data.img" :src="data.img" alt="VIVAIA" />
             <div class="radio-style radio-not-finally" :style="{ paddingLeft: padding_left}" v-for="(item, index) in data.radio_list" :key="index" @click="handleSelect" :data-val="item.value" :data-imgsrc="item.radio_img">
-                <input class="radio" type="radio" :name="item.radio_name" :value="item.value">
+                <input class="radio" type="checkbox" :name="item.radio_name" :value="item.value">
                 <div class="radio-virtual">
-                    <img v-if="Number(radioValue) === index + 1" src="../../assets/radio_icon1.png" alt="VIVAIA">
+                    <img v-if="checkboxValue.includes(index + 1)" src="../../assets/checkbox.png" alt="VIVAIA">
                 </div>
                 {{ item.text }}
             </div>
@@ -20,9 +20,9 @@ export default {
             type: Object,
             default: {}
         },
-        radioValue: {
-            type: Number,
-            default: undefined
+        checkboxValue: {
+            type: Array,
+            default: []
         },
         attr_name1: {
             type: String
@@ -36,8 +36,17 @@ export default {
     },
     methods: {
         handleSelect(e) {
-            this.$emit('changefunc', this.attr_name1, Number(e.target.dataset.val))
-            this.$emit("changefunc", this.attr_name2, e.target.dataset.imgsrc)
+            const val = Number(e.target.dataset.val)
+            let arr = JSON.parse(JSON.stringify(this.checkboxValue))
+            if (arr.includes(val)) {
+                arr.forEach((item, index) => {
+                    if (item === val) {
+                        arr.splice(index, 1)
+                    }
+                })
+            } else arr.push(val)
+            this.$emit('changefunc', this.attr_name1, arr)
+            // this.$emit("changefunc", this.attr_name2, e.target.dataset.imgsrc)
         }
     }
 }
@@ -75,9 +84,8 @@ export default {
             left: -999999px;
         }
         .radio-virtual {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
             display: flex;
             justify-content: center;
             align-items: center;

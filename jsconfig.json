@@ -6,8 +6,17 @@
     "moduleResolution": "node",
     "paths": {
       "@/*": [
-        "src/*"
-      ]
+        "./*"
+      ],
+      "~/*": [
+          "./*"
+      ],
+      "@components/*": [
+          "./components/*"
+      ],
+      "@utils/*": [
+          "./utils/*"
+      ],
     },
     "lib": [
       "esnext",
