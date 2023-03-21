@@ -1,7 +1,12 @@
 <template>
 	<div>
-		<Header />
-		<Content :data="data_1" @changeData="handleChangeData"/>
+        <div v-if="visible">
+            <Header />
+            <Content :data="data_1" @changeData="handleChangeData"/>
+        </div>
+        <div v-else style="text-align: center;">
+            there is no options in this page
+        </div>
 	</div>
 </template>
 
@@ -18,11 +23,13 @@ export default {
 	},
     data() {
         return {
-
+            visible: false,
         }
     },
     mounted() {
-
+        if (window.pt_hello_data) {
+            this.visible = true
+        }
     },
     methods: {
         handleChangeData(name, data) {

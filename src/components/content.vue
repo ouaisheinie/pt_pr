@@ -11,9 +11,12 @@
                     だるくなったり痛くなりますか？
                 </div>
             </div>
-            <AnserRadio :data="data_1" :radioValue="radio1_value" :imgsrc="radio1_img" @changefunc="handleChangeVal" attr_name1="radio1_value" attr_name2="radio1_img" attr_name3="radio1_text" padding_left="42px" />
+            <AnserRadio :data="data_1" :radioValue="radio1_value" :imgsrc="radio1_img" @changefunc="handleChangeVal" attr_name1="radio1_value" attr_name2="radio1_img" attr_name3="radio1_text" attr_name4="radio1_img_src" padding_left="42px" />
         </div>
-        <img class="radio_img" v-show="radio1_img" :src="radio1_img" alt="VIVAIA">
+        <a v-if="radio1_img_src" :href="radio1_img_src">
+            <img class="radio_img" v-show="radio1_img" :src="radio1_img" alt="VIVAIA">
+        </a>
+        <img v-else class="radio_img" v-show="radio1_img" :src="radio1_img" alt="VIVAIA">
 
         <!-- question 2 -->
         <div class="content-radiu1" v-if="radio1_value">
@@ -26,9 +29,12 @@
                     最も悩む足のトラブルはどれですか？
                 </div>
             </div>
-            <AnserRadio :data="data_2" :radioValue="radio2_value" :imgsrc="radio2_img" @changefunc="handleChangeVal" attr_name1="radio2_value" attr_name2="radio2_img" attr_name3="radio2_text" padding_left="30px"/>
+            <AnserRadio :data="data_2" :radioValue="radio2_value" :imgsrc="radio2_img" @changefunc="handleChangeVal" attr_name1="radio2_value" attr_name2="radio2_img" attr_name3="radio2_text" attr_name4="radio2_img_src" padding_left="30px"/>
         </div>
-        <img class="radio_img" v-if="radio2_img" :src="radio2_img" alt="VIVAIA">
+        <a v-if="radio2_img_src" :href="radio2_img_src">
+            <img class="radio_img" v-show="radio2_img" :src="radio2_img" alt="VIVAIA">
+        </a>
+        <img v-else class="radio_img" v-show="radio2_img" :src="radio2_img" alt="VIVAIA">
 
         <!-- question 3 -->
         <div class="content-radiu1" v-if="radio2_value">
@@ -41,9 +47,12 @@
                     解決していますか？
                 </div>
             </div>
-            <AnserRadio :data="data_3" :radioValue="radio3_value" :imgsrc="radio3_img" @changefunc="handleChangeVal" attr_name1="radio3_value" attr_name2="radio3_img" attr_name3="radio3_text" padding_left="30px"/>
+            <AnserRadio :data="data_3" :radioValue="radio3_value" :imgsrc="radio3_img" @changefunc="handleChangeVal" attr_name1="radio3_value" attr_name2="radio3_img" attr_name3="radio3_text" attr_name4="radio3_img_src" padding_left="30px"/>
         </div>
-        <img class="radio_img" v-if="radio3_img" :src="radio3_img" alt="VIVAIA">
+        <a v-if="radio3_img_src" :href="radio3_img_src">
+            <img class="radio_img" v-show="radio3_img" :src="radio3_img" alt="VIVAIA">
+        </a>
+        <img v-else class="radio_img" v-show="radio3_img" :src="radio3_img" alt="VIVAIA">
 
         <!-- question 4 -->
         <div class="content-radiu1" v-if="radio3_value">
@@ -61,7 +70,17 @@
         <div class="submit" v-if="radio4_value.length">
             <button class="submit-btn" @click="handleViewData">回答完了</button>
         </div>
+        
         <img class="radio_img" v-if="finished" :src="radio4_img" alt="VIVAIA">
+        <img class="radio_img" v-if="finished" :src="radio4_img2" alt="VIVAIA">
+        <div class="radio_div_comp">
+            <img class="radio_img" :src="radio4_img3" alt="VIVAIA">
+            <div class="radio_div_container">
+                <a class="radio_div" :href="radio4_img3_skip1"></a>
+                <a class="radio_div" :href="radio4_img3_skip2"></a>
+                <a class="radio_div" :href="radio4_img3_skip3"></a>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -82,22 +101,36 @@ export default {
         return {
             formId: pt_hello_data.formId,
             uid: "",
+            // 1
             data_1: pt_hello_data.data_1,
             radio1_value: pt_hello_data.radio1_value,
             radio1_text: pt_hello_data.radio1_text,
             radio1_img: pt_hello_data.radio1_img,
+            radio1_img_src: "",
+            // 2
             data_2: pt_hello_data.data_2,
             radio2_value: pt_hello_data.radio2_value,
             radio2_text: pt_hello_data.radio2_text,
             radio2_img: pt_hello_data.radio2_img,
+            radio2_img_src: "",
+            // 3
             data_3: pt_hello_data.data_3,
             radio3_value: pt_hello_data.radio3_value,
             radio3_text: pt_hello_data.radio3_text,
             radio3_img: pt_hello_data.radio3_img,
+            radio3_img_src: "",
+            // 4
             data_4: pt_hello_data.data_4,
             radio4_value: pt_hello_data.radio4_value,
             radio4_text_arr: [],
             radio4_img: pt_hello_data.radio4_img,
+            radio4_img_skip: "",
+            radio4_img2: pt_hello_data.radio4_img2,
+            radio4_img2_skip: "",
+            radio4_img3: pt_hello_data.radio4_img3,
+            radio4_img3_skip1: pt_hello_data.radio4_img3_skip1,
+            radio4_img3_skip2: pt_hello_data.radio4_img3_skip2,
+            radio4_img3_skip3: pt_hello_data.radio4_img3_skip3,
             finished: false,
         }
     },
@@ -128,7 +161,6 @@ export default {
                     },
                     body: JSON.stringify(params)
                 })
-                console.log(res)
                 if (res.ok === true) {
                     this.finished = true
                 }
@@ -190,10 +222,25 @@ export default {
         display: inline-block;
         width: 100%;
     }
+    .radio_div_comp {
+        width: 100%;
+        height: 297px;
+        position: relative;
+        .radio_div_container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            .radio_div {
+                display: inline-block;
+                width: 33%;
+                height: 100%;
+            }
+        }
+    }
     .submit {
         text-align: center;
         background: #EACCAF;
-        border-radius: 5px;
         .submit-btn {
             font-size: 16px;
             height: 40px;
@@ -206,6 +253,7 @@ export default {
             margin: 0 auto;
             position: relative;
             top: -20px;
+            border-radius: 5px;
         }
     }
 }

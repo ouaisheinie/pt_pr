@@ -3,7 +3,7 @@
         <a href="#">
             <img class="header-img" src="https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Slice_18.png?v=1679023709" alt="VIVAIA">
         </a>
-        <a href="#">
+        <a href="https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding">
             <img class="content-img" src="https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Style1_Main_BrandTrustpng.png?v=1678987442" alt="VIVAIA">
         </a>
     </div>
