@@ -4,8 +4,8 @@
             <img class="prod-img" v-if="data.img" :src="data.img" alt="VIVAIA" />
             <div class="radio-style radio-not-finally" :style="{ paddingLeft: padding_left}" v-for="(item, index) in data.radio_list" :key="index" @click="handleSelect" :data-val="item.value" :data-imgsrc="item.radio_img" :data-text="item.text">
                 <input class="radio" type="checkbox" :name="item.radio_name" :value="item.value">
-                <div class="radio-virtual">
-                    <img v-if="checkboxValue.includes(index + 1)" src="../../assets/checkbox.png" alt="VIVAIA">
+                <div class="radio-virtual" :data-val="item.value" :data-imgsrc="item.radio_img" :data-text="item.text">
+                    <img v-if="checkboxValue.includes(index + 1)" src="../../assets/checkbox.png" alt="VIVAIA" :data-val="item.value" :data-imgsrc="item.radio_img" :data-text="item.text">
                 </div>
                 {{ item.text }}
             </div>
@@ -41,6 +41,7 @@ export default {
     methods: {
         handleSelect(e) {
             const val = Number(e.target.dataset.val)
+            console.log(val)
             const textVal = e.target.dataset.text
             let arr = JSON.parse(JSON.stringify(this.checkboxValue))
             let arr_text = JSON.parse(JSON.stringify(this.checkboxText))
@@ -59,6 +60,7 @@ export default {
                 arr.push(val)
                 arr_text.push(textVal)
             }
+            console.log(arr)
             this.$emit('changefunc', this.attr_name1, arr)
             this.$emit("changefunc", this.attr_name2, arr_text)
         }

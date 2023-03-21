@@ -73,7 +73,7 @@
         
         <img class="radio_img" v-if="finished" :src="radio4_img" alt="VIVAIA">
         <img class="radio_img" v-if="finished" :src="radio4_img2" alt="VIVAIA">
-        <div class="radio_div_comp">
+        <div class="radio_div_comp" v-if="finished">
             <img class="radio_img" :src="radio4_img3" alt="VIVAIA">
             <div class="radio_div_container">
                 <a class="radio_div" :href="radio4_img3_skip1"></a>
@@ -95,7 +95,9 @@ export default {
         AnserCheckbox
     },
     props: {
-
+        changeloading: {
+            type: Function
+        }
     },
     data() {
         return {
@@ -142,6 +144,7 @@ export default {
             this[name] = val
         },
         async handleViewData() {
+            this.changeloading(true)
             const params = {
                 formId: this.formId,
                 uid: this.uid,
@@ -163,8 +166,17 @@ export default {
                 })
                 if (res.ok === true) {
                     this.finished = true
+                    this.changeloading(false)
+                    const scroll_t = window.scrollY
+                    setTimeout(() => {
+                        window.scrollTo(0, scroll_t + 500)
+                    })
+                } else {
+                    this.changeloading(false)
+                    alert("error")
                 }
             } catch (error) {
+                this.changeloading(false)
                 throw new Error(error)
             }
         }

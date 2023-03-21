@@ -4,7 +4,7 @@
             <img class="prod-img" v-if="data.img" :src="data.img" alt="VIVAIA" />
             <div class="radio-style radio-not-finally" :style="{ paddingLeft: padding_left}" v-for="(item, index) in data.radio_list" :key="index" @click="handleSelect" :data-val="item.value" :data-text="item.text" :data-imgsrc="item.radio_img" :data-imgskip="item.img_src">
                 <input class="radio" type="radio" :name="item.radio_name" :value="item.value">
-                <div class="radio-virtual">
+                <div class="radio-virtual" @click="handleSelect" :data-val="item.value" :data-text="item.text" :data-imgsrc="item.radio_img" :data-imgskip="item.img_src">
                     <img v-if="Number(radioValue) === index + 1" src="../../assets/radio_icon1.png" alt="VIVAIA">
                 </div>
                 {{ item.text }}
