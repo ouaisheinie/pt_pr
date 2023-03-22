@@ -7,8 +7,7 @@
             <div class="question">
                 <div class="q1">Q1</div>
                 <div class="q-text">
-                    長時間の歩行や立ち仕事で、足がよく
-                    だるくなったり痛くなりますか？
+                    長時間の歩行や立ち仕事で、足がよくだるくなったり痛くなりますか？
                 </div>
             </div>
             <AnserRadio :data="data_1" :radioValue="radio1_value" :imgsrc="radio1_img" @changefunc="handleChangeVal" attr_name1="radio1_value" attr_name2="radio1_img" attr_name3="radio1_text" attr_name4="radio1_img_src" padding_left="42px" />
@@ -25,8 +24,7 @@
             <div class="question">
                 <div class="q1">Q2</div>
                 <div class="q-text">
-                    長時間の歩行・立ち仕事の後、
-                    最も悩む足のトラブルはどれですか？
+                    長時間の歩行・立ち仕事の後、最も悩む足のトラブルはどれですか？
                 </div>
             </div>
             <AnserRadio :data="data_2" :radioValue="radio2_value" :imgsrc="radio2_img" @changefunc="handleChangeVal" attr_name1="radio2_value" attr_name2="radio2_img" attr_name3="radio2_text" attr_name4="radio2_img_src" padding_left="30px"/>
@@ -43,8 +41,7 @@
             <div class="question">
                 <div class="q1">Q3</div>
                 <div class="q-text">
-                    その足のトラブルをどのように
-                    解決していますか？
+                    その足のトラブルをどのように解決していますか？
                 </div>
             </div>
             <AnserRadio :data="data_3" :radioValue="radio3_value" :imgsrc="radio3_img" @changefunc="handleChangeVal" attr_name1="radio3_value" attr_name2="radio3_img" attr_name3="radio3_text" attr_name4="radio3_img_src" padding_left="30px"/>
@@ -61,8 +58,7 @@
             <div class="question">
                 <div class="q1">Q4</div>
                 <div class="q-text">
-                    Aria5°フラットシューズの
-                    どこに惹かれましたか？
+                    Aria5°フラットシューズのどこに惹かれましたか？【複数選択】
                 </div>
             </div>
             <AnserCheckbox :data="data_4" :checkboxValue="radio4_value" :imgsrc="radio4_img" @changefunc="handleChangeVal" attr_name1="radio4_value" attr_name2="radio4_text_arr" padding_left="20px" :checkboxText="radio4_text_arr" />
@@ -71,8 +67,12 @@
             <button class="submit-btn" @click="handleViewData">回答完了</button>
         </div>
         
-        <img class="radio_img" v-if="finished" :src="radio4_img" alt="VIVAIA">
-        <img class="radio_img" v-if="finished" :src="radio4_img2" alt="VIVAIA">
+        <a :href="radio4_img_skip">
+            <img class="radio_img" v-if="finished" :src="radio4_img" alt="VIVAIA">
+        </a>
+        <a :href="radio4_img2_skip">
+            <img class="radio_img" v-if="finished" :src="radio4_img2" alt="VIVAIA">
+        </a>
         <div class="radio_div_comp" v-if="finished">
             <img class="radio_img" :src="radio4_img3" alt="VIVAIA">
             <div class="radio_div_container">
@@ -126,15 +126,47 @@ export default {
             radio4_value: pt_hello_data.radio4_value,
             radio4_text_arr: [],
             radio4_img: pt_hello_data.radio4_img,
-            radio4_img_skip: "",
+            radio4_img_skip: pt_hello_data.radio4_img_skip,
             radio4_img2: pt_hello_data.radio4_img2,
-            radio4_img2_skip: "",
+            radio4_img2_skip: pt_hello_data.radio4_img2_skip,
             radio4_img3: pt_hello_data.radio4_img3,
             radio4_img3_skip1: pt_hello_data.radio4_img3_skip1,
             radio4_img3_skip2: pt_hello_data.radio4_img3_skip2,
             radio4_img3_skip3: pt_hello_data.radio4_img3_skip3,
             finished: false,
         }
+    },
+    computed: {
+        listenChange () {
+            const { radio1_value, radio2_value, radio3_value } = this
+            return { radio1_value, radio2_value, radio3_value }
+        }
+    },  
+    watch: {
+        radio1_value(newval, oldval) {
+            if (newval && oldval === undefined) {
+                const scroll_t = window.scrollY
+                setTimeout(() => {
+                    window.scrollTo(0, scroll_t + 500)
+                })
+            }
+        },
+        radio2_value(newval, oldval) {
+            if (newval && oldval === undefined) {
+                const scroll_t = window.scrollY
+                setTimeout(() => {
+                    window.scrollTo(0, scroll_t + 500)
+                })
+            }
+        },
+        radio3_value(newval, oldval) {
+            if (newval && oldval === undefined) {
+                const scroll_t = window.scrollY
+                setTimeout(() => {
+                    window.scrollTo(0, scroll_t + 500)
+                })
+            }
+        },
     },
     mounted() {
         this.uid = nanoid(24)

@@ -1,17 +1,22 @@
 <template>
     <div class="header">
-        <a href="#">
-            <img class="header-img" src="https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Slice_18.png?v=1679023709" alt="VIVAIA">
+        <a href="#header-img-2">
+            <img class="header-img" :src="img1" alt="VIVAIA">
         </a>
-        <a href="https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding">
-            <img class="content-img" src="https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Style1_Main_BrandTrustpng.png?v=1678987442" alt="VIVAIA">
+        <a id="header-img-2" href="https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding">
+            <img class="content-img" :src="img2" alt="VIVAIA">
         </a>
     </div>
 </template>
 
 <script>
 export default {
-    
+    data() {
+        return {
+            img1: pt_hello_data.header_img1,
+            img2: pt_hello_data.header_img2
+        }
+    }
 }
 </script>
 

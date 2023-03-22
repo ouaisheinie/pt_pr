@@ -41,7 +41,6 @@ export default {
     methods: {
         handleSelect(e) {
             const val = Number(e.target.dataset.val)
-            console.log(val)
             const textVal = e.target.dataset.text
             let arr = JSON.parse(JSON.stringify(this.checkboxValue))
             let arr_text = JSON.parse(JSON.stringify(this.checkboxText))

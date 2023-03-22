@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const project_id = pt_hello_data.project_id
+
+createApp(App).mount('#' + project_id)
