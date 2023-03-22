@@ -11,21 +11,21 @@
     <script type="text/javascript">
       
         window.pt_hello_data = {
-            project_id: "zhangshanpeng",
+            project_id: "zhangshanpeng", // app id
             formId: "zhangshanpeng123",
-            header_img1: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Slice_18.png?v=1679023709",
-            header_img2: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Style1_Main_BrandTrustpng.png?v=1678987442",
-            data_1: {
-                key_name: "feetpain_yes_no",
-                img: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Style2_Q1.png?v=1678987425",
-                radio_list: [
+            header_img1: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Slice_18.png?v=1679023709", // 顶部图1
+            header_img2: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Style1_Main_BrandTrustpng.png?v=1678987442", //顶部图2
+            data_1: { // 问题的配置 看序号
+                key_name: "feetpain_yes_no", // keyname
+                img: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Style2_Q1.png?v=1678987425", // 选项上方的图片
+                radio_list: [ // 选项数组
                     {
-                        text: "はい",
+                        text: "はい", // 问题描述
                         id: 1,
                         value: 1,
                         radio_name: 'radio1',
-                        radio_img: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Q1_option.png?v=1679133225",
-                        img_src: "https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding"
+                        radio_img: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Q1_option.png?v=1679133225", // 选择后下方对应显示的图片
+                        img_src: "https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding" // 上面图片对应的跳转链接
                     },
                     {
                         text: "いいえ",
@@ -191,14 +191,14 @@
             },
             radio4_value: [],
             radio4_text: [],
-            radio4_img: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Ending1.png?v=1679308625",
-            radio4_img_skip: "https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding?utm_source=ariaquiz",
-            radio4_img2: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Ending2.png?v=1679308621",
-            radio4_img2_skip: "https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding?utm_source=ariaquiz",
-            radio4_img3: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Ending3.png?v=1679308611",
-            radio4_img3_skip1: "https://vivaia.jp/products/aria5-waterproof?variant=43044211818752",
-            radio4_img3_skip2: "https://vivaia.jp/products/aria-5-bright-color?variant=43212742951168",
-            radio4_img3_skip3: "https://vivaia.jp/products/aria-5-nude?variant=43097318981888"
+            radio4_img: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Ending1.png?v=1679308625", // 底部图1
+            radio4_img_skip: "https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding?utm_source=ariaquiz", // 底部图1的跳转链接
+            radio4_img2: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Ending2.png?v=1679308621", // 底部图2
+            radio4_img2_skip: "https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding?utm_source=ariaquiz", // 底部图2的跳转链接
+            radio4_img3: "https://cdn.shopify.com/s/files/1/0532/3063/3157/files/Ending3.png?v=1679308611", // 底部图3
+            radio4_img3_skip1: "https://vivaia.jp/products/aria5-waterproof?variant=43044211818752", // 底部图3 左边商品跳转链接
+            radio4_img3_skip2: "https://vivaia.jp/products/aria-5-bright-color?variant=43212742951168", // 底部图3 中间商品跳转链接
+            radio4_img3_skip3: "https://vivaia.jp/products/aria-5-nude?variant=43097318981888" // 底部图3 右边商品跳转链接
         }
        let app_container = document.createElement('div')
        app_container.setAttribute("id", pt_hello_data.project_id)
