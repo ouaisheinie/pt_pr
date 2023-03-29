@@ -1,9 +1,9 @@
 <template>
     <div class="header">
-        <a href="#header-img-2">
+        <a href="#question-1">
             <img class="header-img" :src="img1" alt="VIVAIA">
         </a>
-        <a id="header-img-2" href="https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding">
+        <a href="https://lp.vivaia.jp/Bestshoes-for-longtime-walkingandstanding">
             <img class="content-img" :src="img2" alt="VIVAIA">
         </a>
     </div>

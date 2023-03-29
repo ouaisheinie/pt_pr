@@ -1,5 +1,8 @@
 <template>
     <div class="answer-container">
+        <div class="question">
+            {{ question_text }}
+        </div>
         <div class="answer-radio">
             <img class="prod-img" v-if="data.img" :src="data.img" alt="VIVAIA" />
             <div class="radio-style radio-not-finally" :style="{ paddingLeft: padding_left}" v-for="(item, index) in data.radio_list" :key="index" @click="handleSelect" :data-val="item.value" :data-text="item.text" :data-imgsrc="item.radio_img" :data-imgskip="item.img_src">
@@ -38,6 +41,10 @@ export default {
         },
         padding_left: {
             type: String
+        },
+        question_text: {
+            type: String,
+            default: ""
         }
     },
     methods: {
@@ -54,13 +61,27 @@ export default {
 <style lang="less" scoped>
 .answer-container {
     padding: 0 20px;
+    margin-top: 64px;
+    .question {
+        font-size: 20px;
+        line-height: 30px;
+        font-family: "Noto Serif JP";
+        font-weight: 700;
+        background: #ffffff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 24px 16px 10px;
+        color: #8A552B;
+        text-align: center;
+    }
 }
 .answer-radio {
-    padding: 35px 33px 30px;
+    padding: 0px 33px 30px;
     background: #ffffff;
     border-radius: 10px;
-    margin-top: 10px;
     border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     .prod-img {
         display: inline-block;
         width: 100%;
@@ -70,8 +91,10 @@ export default {
         width: 100%;
         height: 40px;
         line-height: 40px;
-        background: #F3EADB;
-        font-size: 12px;
+        border: 1px solid #C4B2A4;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #946134;
         display: flex;
         align-items: center;
         box-sizing: border-box;
@@ -83,6 +106,7 @@ export default {
             left: -999999px;
         }
         .radio-virtual {
+            border: 1px solid #C4B2A4;
             width: 15px;
             height: 15px;
             border-radius: 50%;
@@ -90,7 +114,7 @@ export default {
             justify-content: center;
             align-items: center;
             background: #ffffff;
-            margin-right: 10px;
+            margin-right: 6px;
             img {
                 display: inline-block;
                 width: 100%;

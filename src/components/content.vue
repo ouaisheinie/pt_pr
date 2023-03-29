@@ -1,16 +1,11 @@
 <template>
     <div class="container">
         <!-- question 1 -->
-        <div class="content-radiu1">
-            <h2 class="title"><span>\</span> たっだ4問 <span>/</span></h2>
+        <div id="question-1" class="content-radiu1" :style="{ background: `url(${data_1.bg_img}) no-repeat`}">
+            <h2 class="title">たっだ4問！</h2>
             <p class="desc">カンタン！30秒で完了！</p>
-            <div class="question">
-                <div class="q1">Q1</div>
-                <div class="q-text">
-                    長時間の歩行や立ち仕事で、足がよくだるくなったり痛くなりますか？
-                </div>
-            </div>
-            <AnserRadio :data="data_1" :radioValue="radio1_value" :imgsrc="radio1_img" @changefunc="handleChangeVal" attr_name1="radio1_value" attr_name2="radio1_img" attr_name3="radio1_text" attr_name4="radio1_img_src" padding_left="42px" />
+            <Progress :num="1"/>
+            <AnserRadio :data="data_1" :radioValue="radio1_value" :imgsrc="radio1_img" @changefunc="handleChangeVal" attr_name1="radio1_value" attr_name2="radio1_img" attr_name3="radio1_text" attr_name4="radio1_img_src" padding_left="20px" question_text="Q1. 長時間の歩行や立ち仕事で、足がよくだるくなったり痛くなりますか？"/>
         </div>
         <a v-if="radio1_img_src" :href="radio1_img_src">
             <img class="radio_img" v-show="radio1_img" :src="radio1_img" alt="VIVAIA">
@@ -18,16 +13,11 @@
         <img v-else class="radio_img" v-show="radio1_img" :src="radio1_img" alt="VIVAIA">
 
         <!-- question 2 -->
-        <div class="content-radiu1" v-if="radio1_value">
+        <div class="content-radiu1" v-if="radio1_value" :style="{ background: `url(${data_1.bg_img}) no-repeat`}">
             <h2 class="title"><span>\</span> たっだ3問 <span>/</span></h2>
             <p class="desc">カンタン！30秒で完了！</p>
-            <div class="question">
-                <div class="q1">Q2</div>
-                <div class="q-text">
-                    長時間の歩行・立ち仕事の後、最も悩む足のトラブルはどれですか？
-                </div>
-            </div>
-            <AnserRadio :data="data_2" :radioValue="radio2_value" :imgsrc="radio2_img" @changefunc="handleChangeVal" attr_name1="radio2_value" attr_name2="radio2_img" attr_name3="radio2_text" attr_name4="radio2_img_src" padding_left="30px"/>
+            <Progress :num="2"/>
+            <AnserRadio :data="data_2" :radioValue="radio2_value" :imgsrc="radio2_img" @changefunc="handleChangeVal" attr_name1="radio2_value" attr_name2="radio2_img" attr_name3="radio2_text" attr_name4="radio2_img_src" padding_left="20px" question_text="Q2.  長時間の歩行・立ち仕事の後、最も悩む足のトラブルはどれですか？"/>
         </div>
         <a v-if="radio2_img_src" :href="radio2_img_src">
             <img class="radio_img" v-show="radio2_img" :src="radio2_img" alt="VIVAIA">
@@ -35,16 +25,11 @@
         <img v-else class="radio_img" v-show="radio2_img" :src="radio2_img" alt="VIVAIA">
 
         <!-- question 3 -->
-        <div class="content-radiu1" v-if="radio2_value">
+        <div class="content-radiu1" v-if="radio2_value" :style="{ background: `url(${data_1.bg_img}) no-repeat`}">
             <h2 class="title"><span>\</span> たっだ2問 <span>/</span></h2>
             <p class="desc">カンタン！30秒で完了！</p>
-            <div class="question">
-                <div class="q1">Q3</div>
-                <div class="q-text">
-                    その足のトラブルをどのように解決していますか？
-                </div>
-            </div>
-            <AnserRadio :data="data_3" :radioValue="radio3_value" :imgsrc="radio3_img" @changefunc="handleChangeVal" attr_name1="radio3_value" attr_name2="radio3_img" attr_name3="radio3_text" attr_name4="radio3_img_src" padding_left="30px"/>
+            <Progress :num="3"/>
+            <AnserRadio :data="data_3" :radioValue="radio3_value" :imgsrc="radio3_img" @changefunc="handleChangeVal" attr_name1="radio3_value" attr_name2="radio3_img" attr_name3="radio3_text" attr_name4="radio3_img_src" padding_left="20px" question_text="Q3. その足のトラブルをどのように解決していますか？"/>
         </div>
         <a v-if="radio3_img_src" :href="radio3_img_src">
             <img class="radio_img" v-show="radio3_img" :src="radio3_img" alt="VIVAIA">
@@ -52,19 +37,11 @@
         <img v-else class="radio_img" v-show="radio3_img" :src="radio3_img" alt="VIVAIA">
 
         <!-- question 4 -->
-        <div class="content-radiu1" v-if="radio3_value">
+        <div class="content-radiu1" v-if="radio3_value" :style="{ background: `url(${data_1.bg_img}) no-repeat`}">
             <h2 class="title"><span>\</span> たっだ1問 <span>/</span></h2>
             <p class="desc">限定特典まであと一歩！</p>
-            <div class="question">
-                <div class="q1">Q4</div>
-                <div class="q-text">
-                    Aria5°フラットシューズのどこに惹かれましたか？【複数選択】
-                </div>
-            </div>
-            <AnserCheckbox :data="data_4" :checkboxValue="radio4_value" :imgsrc="radio4_img" @changefunc="handleChangeVal" attr_name1="radio4_value" attr_name2="radio4_text_arr" padding_left="20px" :checkboxText="radio4_text_arr" />
-        </div>
-        <div class="submit" v-if="radio4_value.length">
-            <button class="submit-btn" @click="handleViewData">回答完了</button>
+            <Progress :num="4"/>
+            <AnserCheckbox :data="data_4" :checkboxValue="radio4_value" :imgsrc="radio4_img" @changefunc="handleChangeVal" attr_name1="radio4_value" attr_name2="radio4_text_arr" padding_left="20px" :checkboxText="radio4_text_arr" question_text="Q4. Aria5°フラットシューズのどこに惹かれましたか？<br>【複数選択】" @handleSubmit="handleViewData"/>
         </div>
         
         <a :href="radio4_img_skip">
@@ -87,12 +64,14 @@
 <script>
 import AnserRadio from "./comp/radio"
 import AnserCheckbox from "./comp/checkbox.vue"
+import Progress from "./comp/progress.vue"
 import { nanoid } from 'nanoid'
 
 export default {
     components: {
         AnserRadio,
-        AnserCheckbox
+        AnserCheckbox,
+        Progress
     },
     props: {
         changeloading: {
@@ -224,42 +203,21 @@ export default {
         overflow: hidden;
         padding-bottom: 50px;
         .title {
-            font-size: 34px;
-            line-height: 49px;
-            margin-top: 50px;
+            font-size: 36px;
+            line-height: 44px;
+            margin-top: 60px;
             text-align: center;
             font-family: 'Noto Serif JP';
-            font-weight: 600;
+            font-weight: 900;
+            color: #522F17;
         }
         .desc {
-            font-size: 16px;
-            line-height: 23px;
+            font-size: 14px;
+            line-height: 20px;
             text-align: center;
             font-family: 'Noto Serif JP';
             font-weight: 500;
-        }
-        .question {
-            margin-top: 29px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            padding: 0 12px 12px;
-            .q1 {
-                font-size: 60px;
-                line-height: 60px;
-                margin-top: 5px;
-                font-family: 'Noto Serif JP';
-                font-weight: 700;
-            }
-            .q-text {
-                font-size: 16px;
-                line-height: 22px;
-                margin-bottom: 5px;
-                font-family: 'Noto Serif JP';
-                font-weight: 700;
-                position: relative;
-                top: 10px;
-            }
+            color: #2D2822;
         }
     }
     .radio_img {
@@ -280,24 +238,6 @@ export default {
                 width: 33%;
                 height: 100%;
             }
-        }
-    }
-    .submit {
-        text-align: center;
-        background: #EACCAF;
-        .submit-btn {
-            font-size: 16px;
-            height: 40px;
-            line-height: 20px;
-            padding: 10px 30px;
-            color: #ffffff;
-            background: rgba(138, 92, 49, 0.71);;
-            border: none;
-            display: inline-block;
-            margin: 0 auto;
-            position: relative;
-            top: -20px;
-            border-radius: 5px;
         }
     }
 }
