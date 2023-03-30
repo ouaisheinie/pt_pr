@@ -58,6 +58,9 @@
                 <a class="radio_div" :href="radio4_img3_skip3"></a>
             </div>
         </div>
+        <a :href="radio4_img4_skip">
+            <img class="radio_img" v-if="finished" :src="radio4_img4" alt="VIVAIA">
+        </a>
     </div>
 </template>
 
@@ -112,6 +115,8 @@ export default {
             radio4_img3_skip1: pt_hello_data.radio4_img3_skip1,
             radio4_img3_skip2: pt_hello_data.radio4_img3_skip2,
             radio4_img3_skip3: pt_hello_data.radio4_img3_skip3,
+            radio4_img4: pt_hello_data.radio4_img4,
+            radio4_img4_skip: pt_hello_data.radio4_img4_skip,
             finished: false,
         }
     },
@@ -226,7 +231,7 @@ export default {
     }
     .radio_div_comp {
         width: 100%;
-        height: 297px;
+        height: 215px;
         position: relative;
         .radio_div_container {
             width: 100%;
