@@ -2,7 +2,7 @@
     <div class="container">
         <!-- question 1 -->
         <div class="content-radiu1">
-            <h2 class="title"><span>\</span> たっだ4問 <span>/</span></h2>
+            <h2 class="title"><span>\</span> たった4問 <span>/</span></h2>
             <p class="desc">カンタン！30秒で完了！</p>
             <div class="question">
                 <div class="q1">Q1</div>
@@ -19,7 +19,7 @@
 
         <!-- question 2 -->
         <div class="content-radiu1" v-if="radio1_value">
-            <h2 class="title"><span>\</span> たっだ3問 <span>/</span></h2>
+            <h2 class="title"><span>\</span> 残り3問 <span>/</span></h2>
             <p class="desc">カンタン！30秒で完了！</p>
             <div class="question">
                 <div class="q1">Q2</div>
@@ -36,7 +36,7 @@
 
         <!-- question 3 -->
         <div class="content-radiu1" v-if="radio2_value">
-            <h2 class="title"><span>\</span> たっだ2問 <span>/</span></h2>
+            <h2 class="title"><span>\</span> 残り2問 <span>/</span></h2>
             <p class="desc">カンタン！30秒で完了！</p>
             <div class="question">
                 <div class="q1">Q3</div>
@@ -53,7 +53,7 @@
 
         <!-- question 4 -->
         <div class="content-radiu1" v-if="radio3_value">
-            <h2 class="title"><span>\</span> たっだ1問 <span>/</span></h2>
+            <h2 class="title"><span>\</span> 残り1問 <span>/</span></h2>
             <p class="desc">限定特典まであと一歩！</p>
             <div class="question">
                 <div class="q1">Q4</div>
