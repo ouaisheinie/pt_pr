@@ -81,6 +81,7 @@ export default {
 <style lang="less" scoped>
 .answer-container {
     padding: 0 20px;
+    margin-top: 64px;
     .question {
         font-size: 20px;
         line-height: 30px;
