@@ -2,7 +2,7 @@
     <div class="container">
         <!-- question 1 -->
         <div id="question-1" class="content-radiu1" :style="{ background: `url(${data_1.bg_img}) no-repeat`}">
-            <h2 class="title">たっだ4問！</h2>
+            <h2 class="title">たった4問！</h2>
             <p class="desc">カンタン！30秒で完了！</p>
             <Progress :num="1"/>
             <AnserRadio :data="data_1" :radioValue="radio1_value" :imgsrc="radio1_img" @changefunc="handleChangeVal" attr_name1="radio1_value" attr_name2="radio1_img" attr_name3="radio1_text" attr_name4="radio1_img_src" padding_left="20px" question_text="Q1. 長時間の歩行や立ち仕事で、足がよくだるくなったり痛くなりますか？"/>
@@ -14,7 +14,7 @@
 
         <!-- question 2 -->
         <div class="content-radiu1" v-if="radio1_value" :style="{ background: `url(${data_1.bg_img}) no-repeat`}">
-            <h2 class="title"><span>\</span> たっだ3問 <span>/</span></h2>
+            <h2 class="title"><span>\</span> たった3問 <span>/</span></h2>
             <p class="desc">カンタン！30秒で完了！</p>
             <Progress :num="2"/>
             <AnserRadio :data="data_2" :radioValue="radio2_value" :imgsrc="radio2_img" @changefunc="handleChangeVal" attr_name1="radio2_value" attr_name2="radio2_img" attr_name3="radio2_text" attr_name4="radio2_img_src" padding_left="20px" question_text="Q2.  長時間の歩行・立ち仕事の後、最も悩む足のトラブルはどれですか？"/>
@@ -26,7 +26,7 @@
 
         <!-- question 3 -->
         <div class="content-radiu1" v-if="radio2_value" :style="{ background: `url(${data_1.bg_img}) no-repeat`}">
-            <h2 class="title"><span>\</span> たっだ2問 <span>/</span></h2>
+            <h2 class="title"><span>\</span> たった2問 <span>/</span></h2>
             <p class="desc">カンタン！30秒で完了！</p>
             <Progress :num="3"/>
             <AnserRadio :data="data_3" :radioValue="radio3_value" :imgsrc="radio3_img" @changefunc="handleChangeVal" attr_name1="radio3_value" attr_name2="radio3_img" attr_name3="radio3_text" attr_name4="radio3_img_src" padding_left="20px" question_text="Q3. その足のトラブルをどのように解決していますか？"/>
@@ -38,7 +38,7 @@
 
         <!-- question 4 -->
         <div class="content-radiu1" v-if="radio3_value" :style="{ background: `url(${data_1.bg_img}) no-repeat`}">
-            <h2 class="title"><span>\</span> たっだ1問 <span>/</span></h2>
+            <h2 class="title"><span>\</span> たった1問 <span>/</span></h2>
             <p class="desc">限定特典まであと一歩！</p>
             <Progress :num="4"/>
             <AnserCheckbox :data="data_4" :checkboxValue="radio4_value" :imgsrc="radio4_img" @changefunc="handleChangeVal" attr_name1="radio4_value" attr_name2="radio4_text_arr" padding_left="20px" :checkboxText="radio4_text_arr" question_text="Q4. Aria5°フラットシューズのどこに惹かれましたか？<br>【複数選択】" @handleSubmit="handleViewData"/>
